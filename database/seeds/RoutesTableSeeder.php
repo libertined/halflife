@@ -16,7 +16,7 @@ class RoutesTableSeeder extends Seeder
         for ($i=0; $i<=100; $i++) {
             /** @var Route $route */
             $route = factory(Route::class)->create([
-                'city_id' => rand(1, 200),
+                'city_id' => rand(1, 100),
             ]);
 
             //Привязка тарифа маршрута

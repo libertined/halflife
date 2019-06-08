@@ -12,7 +12,7 @@ class TransportTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<=200; $i++) {
+        for ($i=0; $i<=100; $i++) {
             factory(Transport::class)->create([
                 'route_id' => rand(1, 100),
                 'transport_type_id' => rand(1, 5)

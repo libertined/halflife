@@ -15,7 +15,7 @@ class InspectorsTableSeeder extends Seeder
         //Генерация фейковых инспекторов
         for ($i=0; $i<=200; $i++) {
             factory(Inspector::class)->create([
-                'city_id' => rand(1, 200)
+                'city_id' => rand(1, 100)
             ]);
         }
     }
