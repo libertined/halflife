@@ -16,6 +16,7 @@ class CreateRegionsTable extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
+            $table->text('fias_code')->nullable();//ФИАС-код
             $table->timestamps();
             $table->index('id');
         });
