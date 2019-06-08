@@ -28,7 +28,9 @@ class CreateUsersTable extends Migration
 
             // Идентификатор социальной карты
             $table->date('social_id')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
 
+            $table->rememberToken();
             $table->timestamps();
         });
     }
