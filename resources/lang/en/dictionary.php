@@ -1,5 +1,5 @@
 <?php
-
+$words['title'] = 'Система электронной оплаты проезда';
 $words['nic_plh']='Enter your phone number';
 $words['passw_plh']='Enter your password';
 $words['passw2_plh']='Create password';
