@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 
 class Transport extends Model
 {
@@ -23,5 +24,14 @@ class Transport extends Model
     public function type()
     {
         return $this->hasOne(TransportType::class, 'id', 'transport_type_id');
+    }
+
+    /**
+     * Информация о тарифе данного транспортного средства
+     * @return Collection
+     */
+    public function tariffs(): Collection
+    {
+        return $this->route->tariffs;
     }
 }

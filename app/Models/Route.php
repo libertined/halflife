@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -22,12 +23,12 @@ class Route extends Model
     }
 
     /**
-     * Тариф маршрута
-     * @return HasOne
+     * Тарифы маршрута
+     * @return BelongsToMany
      */
-    public function tariff()
+    public function tariffs()
     {
-        return $this->hasOne(Tariff::class, 'id', 'tariff_id');
+        return $this->belongsToMany(Tariff::class, 'routes_tariffs', 'route_id', 'tariff_id');
     }
 
     /**

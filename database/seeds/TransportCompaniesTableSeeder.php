@@ -13,6 +13,23 @@ class TransportCompaniesTableSeeder extends Seeder
     public function run()
     {
         // фекер тарнспортных компаний
-        factory(TransportCompany::class, 10)->create();
+
+        /** @var TransportCompany $transportCompany */
+        for ($i=0;$i<10;$i++) {
+            $transportCompany = factory(TransportCompany::class)->create();
+
+            //Привязка тарифа маршрута
+            $transportCompany->routes()->attach(rand(1,100));
+
+            if (rand(0,1)) {
+                //Привязка обслуживаемого маршрута
+                $transportCompany->routes()->attach(rand(1,100));
+            }
+
+            if (rand(0,1)) {
+                //Привязка обслуживаемого маршрута
+                $transportCompany->routes()->attach(rand(1,100));
+            }
+        }
     }
 }

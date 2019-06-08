@@ -14,10 +14,23 @@ class RoutesTableSeeder extends Seeder
     {
         //фуйкер маршрутов
         for ($i=0; $i<=100; $i++) {
-            factory(Route::class)->create([
+            /** @var Route $route */
+            $route = factory(Route::class)->create([
                 'city_id' => rand(1, 200),
-                'tariff_id' => rand(1, 20)
             ]);
+
+            //Привязка тарифа маршрута
+            $route->tariffs()->attach(rand(1,20));
+
+            if (rand(0,1)) {
+                //Привязка тарифа маршрута
+                $route->tariffs()->attach(rand(1,20));
+            }
+
+            if (rand(0,1)) {
+                //Привязка тарифа маршрута
+                $route->tariffs()->attach(rand(1,20));
+            }
         }
 
     }
