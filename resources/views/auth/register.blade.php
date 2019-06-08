@@ -4,7 +4,7 @@
 	<div class="h1"><h1>{{ trans('dictionary.h1_register') }}</h1></div>
 	<div class="active-form" id="auth">
 		<div class="io">
-			<p class="registration-info">{{ trans('dictionary.reg_info') }}</p>
+			<p class="registration-info">{{ trans('dictionary.reg_inauth_info') }}</p>
 			<input type="hidden" name="auth[action]" value="register">
 			<label><input type="text" name="auth[nic]" value="" placeholder="{{ trans('dictionary.nic_plh') }}"></label>
 			<label><input type="password" name="auth[passw]" value="" placeholder="{{ trans('dictionary.passw2_plh') }}"></label>
