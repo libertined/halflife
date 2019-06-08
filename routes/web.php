@@ -89,6 +89,16 @@ Route::get('/pay/handler', ['as' => 'pay.handler', 'uses' => function() {
 
 }]);
 
+Route::get('setlocale/{locale}', function ($locale) {
+
+    if (in_array($locale, \Config::get('app.locales'))) {
+        Session::put('locale', $locale);
+    }
+
+    return redirect()->back();
+
+});
+
 /**
 1. Авторизация по телефону/паролю (смс код один для всех)
 2. Регистрация нового по телефону/паролю с ролью пассажир
