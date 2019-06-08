@@ -39,7 +39,7 @@ postdata='';
 $(this).parents('.active-form').find('input, select, textarea').each(function(){
 postdata+=$(this).attr('name')+'='+$(this).val()+'&';
 });
-postscript='/scripts/'+$(this).parents('.active-form').attr('id')+'/';
+postscript=$(this).parents('.active-form').attr('id');
 $.ajax({
 type: 'POST',
 url: postscript,
