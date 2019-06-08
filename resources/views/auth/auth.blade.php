@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-	<div class="h1"><h1>{{ trans('dictionary.h1_buy') }} <?=$words['h1_authorize'] ?></h1></div>
+	<div class="h1"><h1>{{ trans('dictionary.h1_buy') }}</h1></div>
 	<div class="active-form" id="auth">
 		<div class="io">
 			<input type="hidden" name="auth[action]" value="auth">
@@ -20,6 +20,6 @@
 		<p class="register-link"><a href="/register/">{{ trans('dictionary.reg_link') }}</a></p>
 	</div>
 	<div>
-		<label class="onepay"><a href="#" class="art-button art22 btn-large">{{ trans('dictionary.onepay_link') }}</a></label>
+		<label class="onepay"><a href="/scan" class="art-button art22 btn-large">{{ trans('dictionary.onepay_link') }}</a></label>
 	</div>
 @endsection

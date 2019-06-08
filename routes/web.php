@@ -14,11 +14,23 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+})->middleware('auth.mainpage');
 
-
-    return view('welcome');
+Route::get('/login', function () {
+    return view('auth.auth');
 });
 
+Route::get('/cabinet', function () {
+    return view('cabinet.cabinet');
+});
+
+Route::get('/scan', function () {
+    return view('cabinet.scan');
+});
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
 
 // Загрузить страницу с данными для оплаты
 /**

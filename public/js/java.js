@@ -19,13 +19,6 @@ window.location = '/';
 return false;
 });
 
-$('.flags').click(function(){
-setcookie('lang', $(this).attr('href'), 2592000, '/');
-location.reload();
-return false;
-});
-
-
 $('.insert-form').click(function(){
 target=$(this.hash).find('.active-form');
 postdata='form='+target.attr('id')+'&unit='+$(this).parents('.stack-unit').attr('id');
