@@ -14,7 +14,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cabinet';
+    protected $redirectTo = 'cabinet';
 
     public function login(Request $request)
     {
