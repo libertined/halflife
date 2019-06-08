@@ -20,9 +20,6 @@ class CreateRoutesTable extends Migration
             $table->bigInteger('city_id')->unsigned();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
-            $table->bigInteger('tariff_id')->unsigned();
-            $table->foreign('tariff_id')->references('id')->on('tariffs')->onDelete('cascade');
-
             $table->timestamps();
             $table->index('id');
         });
