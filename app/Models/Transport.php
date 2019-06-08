@@ -33,7 +33,7 @@ class Transport extends Model
      * Информация о тарифе данного транспортного средства
      * @return Collection
      */
-    public function tariffs(): Collection
+    public function getTariffs(): Collection
     {
         return $this->route->tariffs;
     }
