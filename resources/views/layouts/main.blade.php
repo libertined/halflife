@@ -10,6 +10,8 @@
     <script src="/js/java.js?"></script>
     <script src="/js/llqrcode.js"></script>
     <script src="/js/webqr.js?"></script>
+    <script type="text/javascript" src="/js/qrcode.min.js"></script>
+
 </head>
 <body>
 	<div class="all">

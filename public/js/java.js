@@ -79,6 +79,30 @@ $('.error').html(res['message']);
 return false;
 });
 
+var showQr = function() {
+
+	var qrContainer = $("#qrcode");
+	var getQrText = function() {
+		var qr;
+		qr = qrContainer.children('img').attr('alt');
+		console.log(qr);
+		return qr;
+	}
+
+	var qrtext = getQrText();
+	qrContainer.children('img').detach();
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		text: qrtext,
+		width: 128,
+		height: 128,
+		colorDark : "#000000",
+		colorLight : "#ffffff",
+		correctLevel : QRCode.CorrectLevel.H
+	});
+}
+
+showQr();
+
 });
 
 

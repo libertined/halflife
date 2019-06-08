@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="param-qr">
-		<div class="qr-code"><img src="blank.png" alt="3ihdhg4hg34vr3g434r"></div>
+		<div class="qr-code" id="qrcode"><img src="blank.png" alt="3ihdhg4hg34vr3g434r"></div>
 	</div>
 	<div class="param-visual">
 		<div class="ticket-time"><?=date("d.m.Y H:i", 1560006691) ?></div>
