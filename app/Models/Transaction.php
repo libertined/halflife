@@ -22,6 +22,14 @@ class Transaction extends Model
     }
 
     /**
+     * @return HasOne
+     */
+    public function tariff()
+    {
+        return $this->hasOne(Tariff::class, 'id', 'tariff_id');
+    }
+
+    /**
      * Сформировать уникальную сигнатуру подтверждения платежа
      * @return string
      */

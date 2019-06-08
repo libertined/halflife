@@ -15,7 +15,8 @@ class TransactionsTableSeeder extends Seeder
         for($i=0; $i<100; $i++) {
             factory(Transaction::class)->create([
                 'transport_id' => rand(1,100),
-                'user_id' => rand(1,100)
+                'user_id' => rand(1,100),
+                'tariff_id' => 1,
             ]);
         }
     }

@@ -12,6 +12,15 @@ use Illuminate\Support\Collection;
 class Transport extends Model
 {
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'secret'
+    ];
+
+    /**
      * Маршрут
      * @return HasOne
      */
@@ -33,7 +42,7 @@ class Transport extends Model
      * Информация о тарифе данного транспортного средства
      * @return Collection
      */
-    public function tariffs(): Collection
+    public function getTariffs(): Collection
     {
         return $this->route->tariffs;
     }
