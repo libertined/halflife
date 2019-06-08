@@ -22,5 +22,8 @@ $factory->define(Transport::class, function (Faker $faker) {
     return [
         //Транспортный номер
         'number' => join('', $number),
+
+        //Секретный ключ верификации
+        'secret' => $faker->md5
     ];
 });
