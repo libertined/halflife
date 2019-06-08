@@ -19,15 +19,12 @@ Route::get('/', function () {
 
 
 // Загрузить страницу с данными для оплаты
-Route::get('/pay/{transport_id}', function () {
-    dd('/pay/{transport_id');
-
-    /**
-     * Данные для заполнения оплаты:
-     *  - для транзакции: id транпорта (отправляется в запросе на оплату вместе с платежными реквизитами)
-     *  - для отображения: номер маршрута, уникальный номер транспорта, стоимость проезда
-     */
-});
+/**
+ * Данные для заполнения оплаты:
+ *  - для транзакции: id транпорта (отправляется в запросе на оплату вместе с платежными реквизитами)
+ *  - для отображения: номер маршрута, уникальный номер транспорта, стоимость проезда
+ */
+Route::get('/pay/{transport_id}', 'Pay@show');
 
 // Обработка транзакции оплаты
 Route::post('/pay/{transport_id}/transaction', function () {
@@ -91,6 +88,16 @@ Route::group([
 Route::get('/pay/handler', ['as' => 'pay.handler', 'uses' => function() {
 
 }]);
+
+Route::get('setlocale/{locale}', function ($locale) {
+
+    if (in_array($locale, \Config::get('app.locales'))) {
+        Session::put('locale', $locale);
+    }
+
+    return redirect()->back();
+
+});
 
 /**
 1. Авторизация по телефону/паролю (смс код один для всех)
