@@ -116,3 +116,10 @@ input::placeholder {font-size:14px;}
 .stack-unit span, .stack-unit a {padding:0px 3px; font-size:13px;}
 .forgot {width:90%;}
 }
+
+.param-qr {
+	text-align: center;
+}
+.qr-code {
+	display: inline-block;
+}
