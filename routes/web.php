@@ -14,6 +14,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+
+
     return view('welcome');
 });
 
@@ -27,9 +29,7 @@ Route::get('/', function () {
 Route::get('/pay/{transport_id}', 'Pay@show');
 
 // Обработка транзакции оплаты
-Route::post('/pay/{transport_id}/transaction', function () {
-    dd('/pay/{transport_id}/transaction');
-
+Route::get('/pay/{transport_id}/transaction', function () {
     /**
      * Принимаемые данные:
      * - id транспорта
@@ -43,6 +43,7 @@ Route::post('/pay/{transport_id}/transaction', function () {
      * - дата оплаты
      * - сигнатура оплаты (подпись данных для верификации платежа)
      */
+    return view('cabinet.ticket');
 });
 
 // Верификация оплаты ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
