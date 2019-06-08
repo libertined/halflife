@@ -12,13 +12,20 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+// Главная страница
 Route::get('/', function () {
 })->middleware('auth.mainpage');
 
+//Авторизация страница с формой
 Route::get('/login', function () {
     return view('auth.auth');
 });
+
+//авторизация пользователя (непосредственно)
+Route::post('/auth', 'Auth\LoginController@login');
+
 
 Route::get('/cabinet', function () {
     return view('cabinet.cabinet');
@@ -60,11 +67,6 @@ Route::get('/pay/{transport_id}/transaction', function () {
 
 // Верификация оплаты ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
 Route::post('/pay/{transport_id}/verify', function () {
-
-});
-
-//авторизация пользователя (вывод страницы)
-Route::get('/auth', function () {
 
 });
 
