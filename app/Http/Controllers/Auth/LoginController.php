@@ -3,37 +3,46 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/cabinet';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function login(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+        $result = [
+            'response' => 'error',
+            'message' => 'Какая-то ошибка'
+        ];
+        $smsCode = $request->input('auth')['smscode'];
+        if (empty($smsCode)) {
+            $result = [
+                'response' => 'sms',
+            ];
+        } else {
+            $res = $this->authUser($request->input('auth'));
+
+            $result = [
+                'response' => 'ok',
+                'postaction' => 'redirect',
+                'location' => $this->redirectTo
+            ];
+        }
+        return json_encode($result);
+    }
+
+    protected function authUser($userInfo)
+    {
+        $id = rand(1, 100);
+        $user = User::find($id);
+        Auth::login($user);
     }
 }
