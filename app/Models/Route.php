@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Модель маршрутов
  * @package App\Models
  */
-class Routes extends Model
+class Route extends Model
 {
     //
 }
