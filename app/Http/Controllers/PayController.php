@@ -150,7 +150,11 @@ class PayController extends Controller
         //Отображаем чек транзакции
         return view('cabinet.ticket', [
             'transaction' => $transaction,
-            'verifyString' => "{$transaction->id}::{$transaction->getSignature()}"
+            'verifyString' => "{$transaction->id}::{$transaction->getSignature()}",
+            "verifyLink" => route('pay.verify', [
+                'transaction' => $transaction->id,
+                'signature' => $transaction->getSignature()
+            ])
         ]);
     }
 

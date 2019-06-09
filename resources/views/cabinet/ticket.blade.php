@@ -8,7 +8,8 @@
 			<div class="ticket-cost">{{ $transaction->cost }}  {{ trans('dictionary.rub') }}</div>
 		</div>
 		<div class="qr-code" id="qrcode">
-			<img src="blank.png" alt="{{ $verifyString }}"></p>
+			<img src="blank.png" alt="{{ $verifyLink }}"></p>
+			<!--<img src="blank.png" alt="{{ $verifyString }}"></p>-->
 		</div>
 		<div class="param-pin">
 			<div>1 2 3 4</div>
