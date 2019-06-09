@@ -123,3 +123,22 @@ input::placeholder {font-size:14px;}
 .qr-code {
 	display: inline-block;
 }
+.modal {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal .container img {
+	display: block;
+	margin: 0 auto;
+}
+.modal .container .message {
+	text-transform: capitalize;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 21px;
+}
