@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Inspector;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use phpDocumentor\Reflection\Types\Callable_;
@@ -33,9 +34,14 @@ class LoginController extends Controller
         return $this->loginByUser($authInfo, array($this, "authInspector"));
     }
 
+    /**
+     * Выход
+     * @return Redirector
+     */
     public function logout()
     {
         Auth::logout();
+
         return redirect('/login');
     }
 

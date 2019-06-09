@@ -20,9 +20,9 @@ Route::get('/', function () {
 })->middleware('auth.mainpage');
 
 //Авторизация страница с формой
-Route::get('/login', function () {
+Route::get('/login', ['as' => 'login', 'uses' => function () {
     return view('auth.auth');
-});
+}]);
 
 //авторизация пользователя (непосредственно)
 Route::post('/auth', 'Auth\LoginController@login');
@@ -31,6 +31,11 @@ Route::post('/auth', 'Auth\LoginController@login');
 Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 Route::get('/cabinet', ['as' => 'cabinet', 'uses' => function () {
+
+    if (!Auth::check()) {
+        return redirect(route('login'));
+    }
+
     return view('cabinet.cabinet', [
         'transaction' => Transaction::where('user_id', Auth::user()->getAuthIdentifier())->first()
     ]);

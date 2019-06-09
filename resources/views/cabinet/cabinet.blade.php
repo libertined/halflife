@@ -28,6 +28,6 @@
 
 		</div>
 	</div>
-	<div class="exit-button"><a href="{{ route('logout') }}" class="exit">{{ trans('dictionary.exit') }}</a></div>
+	<div class="exit-button"><a href="/logout" class="exit">{{ trans('dictionary.exit') }}</a></div>
 	</div>
 @endsection
