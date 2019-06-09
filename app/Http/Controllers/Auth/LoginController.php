@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Inspector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use phpDocumentor\Reflection\Types\Callable_;
 
 class LoginController extends Controller
 {
@@ -14,26 +17,46 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'cabinet';
+    protected $redirectPassenger = 'cabinet';
+
+    protected $redirectInspector = 'inspector/cabinet';
 
     public function login(Request $request)
     {
+        $authInfo = $request->input('auth');
+        return $this->loginByUser($authInfo, array($this, "authUser"));
+    }
+
+    public function loginInspector(Request $request)
+    {
+        $authInfo = $request->input('auth');
+        return $this->loginByUser($authInfo, array($this, "authInspector"));
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    protected function loginByUser($authInfo, callable $authUser)
+    {
+        // На будущее ))
         $result = [
             'response' => 'error',
             'message' => 'Какая-то ошибка'
         ];
-        $smsCode = $request->input('auth')['smscode'];
-        if (empty($smsCode)) {
+        if (empty($authInfo['smscode'])) {
             $result = [
                 'response' => 'sms',
             ];
         } else {
-            $res = $this->authUser($request->input('auth'));
+            $res = call_user_func_array($authUser, [$authInfo]);
 
             $result = [
                 'response' => 'ok',
                 'postaction' => 'redirect',
-                'location' => $this->redirectTo
+                'location' => $res['redirect']
             ];
         }
         return json_encode($result);
@@ -44,5 +67,18 @@ class LoginController extends Controller
         $id = rand(1, 100);
         $user = User::find($id);
         Auth::login($user);
+        return [
+            'redirect' => $this->redirectPassenger
+        ];
+    }
+
+    protected function authInspector($userInfo)
+    {
+        $id = rand(1, 100);
+        $user = Inspector::find($id);
+        Auth::login($user);
+        return [
+            'redirect' => $this->redirectInspector
+        ];
     }
 }
