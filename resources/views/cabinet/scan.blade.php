@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-	<!--div class="h1"><h1>{{ trans('dictionary.h1_scan') }}</h1></div-->
 	<div class="scan">
 		<div class="scan-text">{{ trans('dictionary.scan_info') }}</div>
 		<div class="scan-window" id="mainbody">
