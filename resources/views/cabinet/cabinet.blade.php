@@ -4,13 +4,16 @@
 	<div class="quatro">
         @if(!empty($transaction))
             <div class="quatro-ticket">
-                <a href="{{ route('pay.ticket', ['transaction' => $transaction->id, 'signature' => $transaction->getSignature()]) }}">{{ trans('dictionary.thereis_ticket') }}"></a>
+                <a href="{{ route('pay.ticket', ['transaction' => $transaction->id, 'signature' => $transaction->getSignature()]) }}"></a>
                 <span class="no-ticket">
                     {{ $transaction->transport->type->title }} №{{ $transaction->transport->route->number }}
                 </span>
             </div>
         @else
-            <div class="quatro-ticket"><a href="#"></a><span class="no-ticket">Нет билета</span></div>
+            <div class="quatro-ticket">
+                <a href="#"></a>
+                <span class="no-ticket">Нет билета</span>
+            </div>
         @endif
 
 		<div class="quatro-balance"><a href="#"></a><span>1000.00 {{ trans('dictionary.rub') }}<br>на счету</span></div>
