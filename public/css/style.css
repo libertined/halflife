@@ -171,7 +171,7 @@ input::placeholder {font-size:14px;}
 	margin: 0;
 	width: 52px;
 	height: 52px;
-	background-image: url('find.png');
+	background-image: url('/pic/find.png');
 	background-repeat: no-repeat;
 	border: none;
 	outline: none;
@@ -192,7 +192,7 @@ input::placeholder {font-size:14px;}
 	margin: 0;
 	width: 52px;
 	height: 52px;
-	background-image: url('plus.png');
+	background-image: url('/pic/plus.png');
 	background-repeat: no-repeat;
 	border: none;
 	outline: none;
@@ -229,7 +229,7 @@ input::placeholder {font-size:14px;}
     position: absolute;
     top: 9px;
     left: 910px;
-    background-image: url(delete.png);
+    background-image: url(/pic/delete.png);
     background-repeat: no-repeat;
     background-position: 90% 50%;
     width: 30px;
@@ -245,7 +245,7 @@ input::placeholder {font-size:14px;}
 	position: absolute;
     top: 9px;
     left: 898px;
-	background-image: url('edit.png');
+	background-image: url('/pic/edit.png');
 	background-size: cover;
     background-repeat: no-repeat;
 	width: 30px;
@@ -256,7 +256,7 @@ input::placeholder {font-size:14px;}
 	position: absolute;
     top: 9px;
     left: 858px;
-	background-image: url('qr.png');
+	background-image: url('/pic/qr.png');
 	background-size: cover;
     background-repeat: no-repeat;
 	width: 30px;
@@ -285,7 +285,7 @@ header {
     left: 7px;
 	width: 3px;
 		height: 33px;
-	background-image: url('separator.png');
+	background-image: url('/pic/separator.png');
 }
 .menu a {
 	text-transform: capitalize;
