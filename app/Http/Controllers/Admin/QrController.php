@@ -15,7 +15,6 @@ class QrController extends Controllers\Controller
      */
     public function show(Transport $transport)
     {
-        dd($transport->toArray());
         return view('admin.qr', [
             "transport" => $transport,
             "tariff" => $transport->getTariffs()->first()
