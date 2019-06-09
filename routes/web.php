@@ -12,13 +12,20 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
+// Главная страница
 Route::get('/', function () {
 })->middleware('auth.mainpage');
 
+//Авторизация страница с формой
 Route::get('/login', function () {
     return view('auth.auth');
 });
+
+//авторизация пользователя (непосредственно)
+Route::post('/auth', 'Auth\LoginController@login');
+
 
 Route::get('/cabinet', function () {
     return view('cabinet.cabinet');
@@ -38,10 +45,10 @@ Route::get('/register', function () {
  *  - для транзакции: id транпорта (отправляется в запросе на оплату вместе с платежными реквизитами)
  *  - для отображения: номер маршрута, уникальный номер транспорта, стоимость проезда
  */
-Route::get('/pay/{transport_id}', 'Pay@show');
+Route::get('/pay/{transport}/{tariff_id?}', 'PayController@show');
 
 // Обработка транзакции оплаты
-Route::get('/pay/{transport_id}/transaction', function () {
+Route::get('/pay/{transport}/transaction', ['as' => 'pay.transaction', 'uses' => function () {
     /**
      * Принимаемые данные:
      * - id транспорта
@@ -56,17 +63,13 @@ Route::get('/pay/{transport_id}/transaction', function () {
      * - сигнатура оплаты (подпись данных для верификации платежа)
      */
     return view('cabinet.ticket');
-});
+}]);
 
-// Верификация оплаты ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
-Route::post('/pay/{transport_id}/verify', function () {
-
-});
-
-//авторизация пользователя (вывод страницы)
-Route::get('/auth', function () {
-
-});
+/**
+ * Верификация оплаты
+ * ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
+ */
+Route::get('/pay/verify/{transaction}', 'PayController@verify');
 
 //регистрация
 

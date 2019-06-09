@@ -17,6 +17,8 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('transport_id')->unsigned();
             $table->foreign('transport_id')->references('id')->on('transports')->onDelete('cascade');
+            $table->bigInteger('tariff_id')->unsigned();
+            $table->foreign('tariff_id')->references('id')->on('tariffs')->onDelete('cascade');
             //Стоимость платежа
             $table->float('cost');
             //Пользователь совершивший оплату

@@ -6,8 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Collection;
 
+/**
+ * @property string secret
+ */
 class Transport extends Model
 {
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'secret'
+    ];
+
     /**
      * Маршрут
      * @return HasOne
@@ -30,8 +42,36 @@ class Transport extends Model
      * Информация о тарифе данного транспортного средства
      * @return Collection
      */
-    public function tariffs(): Collection
+    public function getTariffs(): Collection
     {
         return $this->route->tariffs;
+    }
+
+    /**
+     * Перегенерировать ключ проверка транспорта
+     * (предпологается перегенерация ключа при выходе транспорта на маршрут).
+     * @return string
+     */
+    public function reGenerateSecret(): string
+    {
+        $secretParts = [
+            $this->id,
+            now(),
+        ];
+
+        $secret = md5(join('', $secretParts));
+        $this->secret = $secret;
+        $this->save();
+
+        return $secret;
+    }
+
+    /**
+     * Получить уникальный секретный ключ
+     * @return string
+     */
+    public function getSecret(): string
+    {
+        return $this->secret;
     }
 }

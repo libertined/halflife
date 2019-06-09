@@ -23,6 +23,9 @@ class CreateTransportsTable extends Migration
             $table->bigInteger('transport_type_id')->unsigned();
             $table->foreign('transport_type_id')->references('id')->on('transport_types')->onDelete('cascade');
 
+            // Секретный ключ (выдается заново при выходе на маршрут)
+            $table->string('secret')->nullable();
+
             $table->timestamps();
         });
     }
