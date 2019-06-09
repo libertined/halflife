@@ -11,8 +11,8 @@ $factory->define(Transaction::class, function (Faker $faker) {
 
         //— lat — широта, lon — долгота;
         'geo_data' => json_encode([
-            'lat' => rand(30,36) . '.329522',
-            'lon' => rand(30,36) .'.943493'
+            'lat' => rand(30,36) . '.' . $faker->randomNumber(6),
+            'lon' => rand(30,36) . '.' . $faker->randomNumber(6),
         ]),
     ];
 });

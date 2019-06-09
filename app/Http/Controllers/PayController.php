@@ -26,15 +26,16 @@ class PayController extends Controller
     /**
      * Форма оплаты (эквайринговая система).
      * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
      * @return array
      */
-    public function card(Request $request)
+    public function card(Request $request, Transport $transport, Tariff $tariff)
     {
-        return [
-            "response" => "ok",
-            "postaction" => "redirect",
-            "location" => route('cabinet.card')
-        ];
+        return view('cabinet.card', [
+            "transport" => $transport,
+            "tariff" => $tariff
+        ]);
     }
 
     /**
@@ -58,16 +59,19 @@ class PayController extends Controller
         $transaction->transport_id = $transport->id;
         $transaction->tariff_id = $tariff->id;
         $transaction->cost = $tariff->cost;
-        $transaction->geo_data = json_encode([]);
+        $transaction->geo_data = json_encode([
+            'lat' => rand(30,36) . '.123456',
+            'lon' => rand(30,36) . '.654321',
+        ]);
         $transaction->save();
 
-        return [
+        return json_encode([
             "response" => "ok",
             "postaction" => "redirect",
             "location" => route('pay.ticket', [
                 'transaction' => $transaction->id
             ])
-        ];
+        ]);
     }
 
     /**
@@ -78,7 +82,7 @@ class PayController extends Controller
      */
     public function ticket(Request $request, Transaction $transaction)
     {
-        return view('pay.ticket', [
+        return view('cabinet.ticket', [
             'transaction' => $transaction
         ]);
     }

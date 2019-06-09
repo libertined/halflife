@@ -53,7 +53,7 @@ Route::group([
     ]);
 
     // Форма оплаты (эквайринг)
-    Route::post('/card/{transport}/{tariff}', [
+    Route::get('/card/{transport}/{tariff}', [
         'as' => 'card',
         'uses' => 'PayController@card'
     ]);
@@ -65,7 +65,7 @@ Route::group([
     ]);
 
     // Обработка транзакции оплаты
-    Route::post('/ticket/{transaction}', [
+    Route::get('/ticket/{transaction}', [
         'as' => 'ticket',
         'uses' => 'PayController@ticket'
     ]);

@@ -5,7 +5,7 @@
 	<div class="io">
 		<input type="hidden" name="paydata[pageback]" value="cabinet">
 		<!--input type="hidden" name="paydata[sum]" value="31"><p>Стоимость проезда: 31 руб.</p-->
-		<label class="pay-sum"><input type="text" name="paydata[sum]" value="" placeholder="{{ trans('dictionary.payment_sum_plh') }}"></label>
+		<label class="pay-sum"><input type="text" name="paydata[sum]" value="{{ $tariff->cost }}" placeholder="{{ trans('dictionary.payment_sum_plh') }}"></label>
 		<div class="card-data">
 			<div class="card-data-front">
 				<img src="/pic/cards.png">
@@ -21,6 +21,6 @@
 		<p class="error switch2"></p>
 	</div>
 	<div class="buy-button">
-		<div><a href="#" class="art-button go-pay">{{ trans('dictionary.sbm_getscan') }}</a></div>
+		<div><a href="{{ route('pay.transaction', ['transport' => $transport->id, 'tariff' => $tariff->id]) }}" class="art-button go-pay">{{ trans('dictionary.sbm_getscan') }}</a></div>
 	</div>
 @endsection
