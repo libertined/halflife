@@ -14,14 +14,14 @@
 		@foreach ($transports as $transport)
 			<div class="row">
 				<div class="text">
-					{{ $transport->id }}<br>
-					{{ $transport->number }}<br>
-					{{ $transport->type->title }}<br>
-					{{ $transport->route->number }}<br>
+					<div class="td id">{{ $transport->id }}</div>
+					<div class="td number">{{ $transport->number }}</div>
+					<div class="td type">{{ $transport->type->title }}</div>
+					<div class="td route">{{ $transport->route->number }}</div>
 				</div>
 				<div class="edit"></div>
 				<div class="delete"></div>
-				<div class="qr-btn">{{ route('admin.qr.generate', ["transport_id" => $transport->id]) }}</div>
+				<a href={{ route('admin.qr.generate', ["transport_id" => $transport->id]) }}><div class="qr-btn"></div></a>
 			</div>
 		@endforeach
 	</div>

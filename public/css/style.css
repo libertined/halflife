@@ -28,7 +28,7 @@ h1, h2, h3 {color:var(--color-grey); margin:0px;}
 h1 {font-size:32px; font-weight:500;}
 h2 {font-size:24px; font-weight:500;}
 
-.all {max-width:1058px; margin:20px auto; padding:40px 20px 20px; border:1px solid var(--color-front); border-radius:40px;}
+.all {max-width:1058px; margin:20px auto; padding:40px 20px 20px;}
 .io {position:relative;}
 /*.h1 {position:absolute; width:100%; top:60px; opacity:0.7; text-align:center;}*/
 .h1 {display:none;}
@@ -40,7 +40,7 @@ h2 {font-size:24px; font-weight:500;}
 #auth, #register {position:relative;}
 .art-button {display:inline-block; font-weight:500; color:#ffffff; background-color:var(--color-front); border:2px solid var(--color-grey); border-radius:6px; text-align:center; font-size:24px; color:#000000; text-decoration:none; text-transform:uppercase; outline:none; transition:0.3s;}
 .art-button:hover {background-color:var(--color-front2); color:#ffffff;}
-.play-button {position:absolute; right:-5px; width:54px; height:24px; top:24px; padding:9px 0px 21px; font-size:48px; border-radius:32px; line-height:24px; font-weight:700; border:5px solid #ffffff; background:url(/pic/go-on.svg) center center no-repeat var(--color-front); background-size:24px 24px;}
+.play-button {position:absolute; right: 45px; width:54px; height:24px; top:24px; padding:9px 0px 21px; font-size:48px; border-radius:32px; line-height:24px; font-weight:700; border:5px solid #ffffff; background:url(/pic/go-on.svg) center center no-repeat var(--color-front); background-size:24px 24px;}
 .get-low {top:150px;}
 .btn-large {padding:12px 20px; min-width:180px;}
 .btn-small {padding:10px 16px; font-size:16px; width:110px;}
@@ -50,8 +50,8 @@ h2 {font-size:24px; font-weight:500;}
 .buy-button a {width:100px; height:40px; padding:30px 0px; border-radius:50px;}
 .buy-button {margin:10px 0px;}
 
-.quatro {display:flex; flex-wrap:wrap;} 
-.quatro div {width:120px; padding:20px;}
+.quatro {display:flex; flex-wrap:wrap; justify-content: center;} 
+.quatro div {width:120px; padding:15px;}
 .quatro div a {display:block; width:116px; height:116px; border:2px solid var(--color-grey); border-radius:60px;}
 .quatro div span {display:block; color:var(--color-grey); font-weight:500;}
 .quatro-ticket a {background:url(/pic/round-ticket.svg) center center no-repeat; background-size:100px 100px;} 
@@ -130,6 +130,8 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 .param-visual div, .param-visual div span {font-size:16px; color:#000000; font-weight:700;}
 .param-visual {margin-bottom:10px;}
 
+.pay-form .io {margin:120px auto 20px; height:90px; padding:30px 0px 10px; background:url(/pic/half-ticket.svg) center top no-repeat; border-bottom:5px solid #000000; background-size:auto 100%;}
+.pay-form p {margin:0px; font-size:18px; color:#000000; font-weight:700;}
 
 @media (max-width: 777px) {
 .all {margin:0px; padding:10px; border:0px;}
@@ -140,6 +142,7 @@ input::placeholder {font-size:14px;}
 .admin .dual {flex-wrap:wrap;}
 .admin .dual > div {width:100%;}
 .stack-unit span, .stack-unit a {padding:0px 3px; font-size:13px;}
+.play-button {right: -5px;}
 }
 
 
