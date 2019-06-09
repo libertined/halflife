@@ -41,7 +41,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapAdminRoutes();
 
-        //
+        $this->mapInspectorRoutes();
     }
 
     /**
@@ -81,5 +81,15 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['auth.admin'])
             ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));
+    }
+
+    /**
+     * Подключение роутинга панели инспекторов
+     */
+    protected function mapInspectorRoutes()
+    {
+        Route::middleware(['auth.inspector'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/inspector.php'));
     }
 }

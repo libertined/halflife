@@ -26,6 +26,8 @@ Route::get('/login', function () {
 //авторизация пользователя (непосредственно)
 Route::post('/auth', 'Auth\LoginController@login');
 
+//авторизация пользователя (непосредственно)
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/cabinet', function () {
     return view('cabinet.cabinet');
