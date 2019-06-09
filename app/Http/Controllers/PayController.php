@@ -48,7 +48,7 @@ class PayController extends Controller
         return json_encode([
             "response" => "ok",
             "postaction" => "redirect",
-            'location' => route($route, $data)
+            'location' => route($route, $data, false)
         ]);
     }
 
