@@ -1,24 +1,30 @@
-@extends('layouts.inspector')
+@extends('layouts.admin_main')
 
 @section('content')
-	<table width="100%">
-		<tr>
-			<th>ID</th>
-			<th>Номер</th>
-			<th>Тип</th>
-			<th>Номер маршрута</th>
-			<th>QR</th>
-		</tr>
-	@foreach ($transports as $transport)
-		<tr>
-			<td>{{ $transport->id }}</td>
-			<td>{{ $transport->number }}</td>
-			<td>{{ $transport->type->title }}</td>
-			<td>{{ $transport->route->number }}</td>
-			<td>{{ route('admin.qr.generate', ["transport_id" => $transport->id]) }}</td>
-		</tr>
-	@endforeach
-	</table>
+	<div class="search-container">
+		<form action="" method="">
+			<input type="hidden" name="route">
+			<input type="text" name="" class="search" placeholder="Введите название...">
+			<input type="submit" name="search" value="" class="find">
+		</form>
+		<div class="add" id='add'></div>
+	</div>
+
+	<div class="table-container">
+		@foreach ($transports as $transport)
+			<div class="row">
+				<div class="text">
+					{{ $transport->id }}<br>
+					{{ $transport->number }}<br>
+					{{ $transport->type->title }}<br>
+					{{ $transport->route->number }}<br>
+				</div>
+				<div class="edit"></div>
+				<div class="delete"></div>
+				<div class="qr-btn">{{ route('admin.qr.generate', ["transport_id" => $transport->id]) }}</div>
+			</div>
+		@endforeach
+	</div>
 	<div>
 		{{ $transports->links() }}
 	</div>
