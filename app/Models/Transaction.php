@@ -13,12 +13,29 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Transaction extends Model
 {
     /**
+     * Дополнительно подгружаемые сущности
+     * @var array
+     */
+    protected $with = [
+        'transport',
+        'tariff'
+    ];
+
+    /**
      * Транспортное средство за которое совершена оплата.
      * @return HasOne
      */
     public function transport()
     {
         return $this->hasOne(Transport::class, 'id', 'transport_id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function tariff()
+    {
+        return $this->hasOne(Tariff::class, 'id', 'tariff_id');
     }
 
     /**
