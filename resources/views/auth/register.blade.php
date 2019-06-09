@@ -14,6 +14,12 @@
 			<p class="switch1">{{ trans('dictionary.sms_code_info') }}</p>
 			<label><input type="text" name="auth[smscode]" value="" placeholder="{{ trans('dictionary.sms_plh') }}"></label>
 		</div>
-		<label class="go-on"><a href="#" class="art-button play-button" title="{{ trans('dictionary.sbm_register') }}">&raquo;</a></label>
+		<label class="go-on"><a href="#" class="art-button play-button" title="{{ trans('dictionary.sbm_register') }}"></a></label>
+	</div>
+	<div>
+		<p class="register-link"><a href="/auth/"></a></p>
+	</div>
+	<div>
+		<label class="onepay"><a href="/auth/" class="art-button art22 btn-large">{{ trans('dictionary.back') }}</a></label>
 	</div>
 @endsection
