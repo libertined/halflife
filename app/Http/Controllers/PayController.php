@@ -69,7 +69,8 @@ class PayController extends Controller
             "response" => "ok",
             "postaction" => "redirect",
             "location" => route('pay.ticket', [
-                'transaction' => $transaction->id
+                'transaction' => $transaction->id,
+                'signature' => $transaction->getSignature()
             ])
         ]);
     }
@@ -78,12 +79,23 @@ class PayController extends Controller
      * Страница отображения купленого билета
      * @param Request $request
      * @param Transaction $transaction
+     * @param string $signature
      * @return View
      */
-    public function ticket(Request $request, Transaction $transaction)
+    public function ticket(Request $request, Transaction $transaction, string $signature)
     {
+        //Если сигнатура не валидная, то отображаем, что страница не найдена
+        if (!$transaction->isValidSignature($signature)) {
+            abort(404);
+        }
+
+        //Отображаем чек транзакции
         return view('cabinet.ticket', [
-            'transaction' => $transaction
+            'transaction' => $transaction,
+            'verifyLink' => route('pay.verify', [
+                'transaction' => $transaction->id,
+                'signature' => $transaction->getSignature()
+            ])
         ]);
     }
 
@@ -92,16 +104,15 @@ class PayController extends Controller
      *
      * @param Request $request
      * @param Transaction $transaction
+     * @param string $signature
      * @return array
      */
-    public function verify(Request $request, Transaction $transaction)
+    public function verify(Request $request, Transaction $transaction, string $signature)
     {
-        $valid = $transaction->getSignature() == $request->get('secret');
-
         return [
             'success' => 1,
             'date' => [
-                'valid' => $valid,
+                'valid' => $transaction->isValidSignature($signature),
                 'transaction' => $transaction->toArray(),
             ]
         ];
