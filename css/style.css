@@ -116,3 +116,236 @@ input::placeholder {font-size:14px;}
 .stack-unit span, .stack-unit a {padding:0px 3px; font-size:13px;}
 .forgot {width:90%;}
 }
+
+.param-qr {
+	text-align: center;
+}
+.qr-code {
+	display: inline-block;
+}
+.modal {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal .container img {
+	display: block;
+	margin: 0 auto;
+}
+.modal .container .message {
+	text-transform: capitalize;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+.container {
+	width: 912px;
+	height: 100%;
+	text-align: center;
+	margin: 0 auto;
+}
+.search-container {
+	margin: 50px 0 20px 0;
+	width: 912px;
+}
+.search-container input[type="text"] {
+	height: 50px;
+	width: 800px;
+	background: #FFFFFF;
+	border: 2px solid #000000;
+	box-sizing: border-box;
+	box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.25);
+	border-radius: 5px;
+	padding: 0 10px;
+}
+.search-container .find {
+	display: inline;
+	position: relative;
+	top: 21px;
+	padding: 0;
+	margin: 0;
+	width: 52px;
+	height: 52px;
+	background-image: url('find.png');
+	background-repeat: no-repeat;
+	border: none;
+	outline: none;
+	background-color: #ffffff;
+}
+.search-container .find:active {
+	outline: none;
+	border: none;
+}
+.search-container form {
+	display: inline-block;
+}
+.search-container .add {
+	display: inline-block;
+	position: relative;
+	top: 21px;
+	padding: 0;
+	margin: 0;
+	width: 52px;
+	height: 52px;
+	background-image: url('plus.png');
+	background-repeat: no-repeat;
+	border: none;
+	outline: none;
+	background-color: #ffffff;
+}
+
+.table-container {
+	display: inline-block;
+	width: 912px;
+	border: 2px solid #000000;
+	border-radius: 5px;
+}
+.row {
+	height: 50px;
+	position: relative;
+}
+.row .text {
+	display: inline-block;
+	width: 100%;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 50px;
+	text-indent: 5px;
+	text-align: left;
+	color: #000000;
+}
+.row .text .td {
+	display: inline-block;
+}
+.row .text .id {
+	width: 100px;
+}
+.row .text .number {
+	width: 200px;
+}
+.row .text .type {
+	width: 250px;
+}
+.row .text .route {
+	width: 250px;
+}
+.row:nth-child(odd) {
+	background: #8CAA2425;
+}
+.row .delete{
+    display: none;
+    position: absolute;
+    top: 9px;
+    left: 910px;
+    background-image: url(delete.png);
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    width: 30px;
+    height: 29px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 0px 15px 15px 0px;
+    padding: 3px 11px 3px 45px;
+    z-index: -1;
+}
+.row .edit{
+	display: inline-block;
+	position: absolute;
+    top: 9px;
+    left: 898px;
+	background-image: url('edit.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+	width: 30px;
+	height: 30px;
+}
+.qr-btn {
+	display: inline-block;
+	position: absolute;
+    top: 9px;
+    left: 858px;
+	background-image: url('qr.png');
+	background-size: cover;
+    background-repeat: no-repeat;
+	width: 30px;
+	height: 30px;
+}
+header {
+	width: 100vw;
+	height: 50px;
+	background: #8CAA24;
+	box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.menu {
+	display: inline-block;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 50px;
+	padding: 0 5px;
+}
+.menu:after {
+	content: ' ';
+	display: inline-block;
+	position: relative;
+    top: 9px;
+    left: 7px;
+	width: 3px;
+		height: 33px;
+	background-image: url('separator.png');
+}
+.menu a {
+	text-transform: capitalize;
+	text-decoration: none;
+	color: #000000;
+}
+
+.container-expenses {
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 55px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	color: #000000;
+}
+.text-center {
+	padding: 5px 0;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14.2px;
+	line-height: 16px;
+	text-align: center;
+	color: #000000;
+}
+.table-history {
+	display: inline-block;
+	border: 2px solid #000000;
+	border-radius: 5px;
+	width: 250px;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14.2px;
+	line-height: 16px;
+	text-align: center;
+	margin-top: 30px;
+	background-color: #ffffff;
+}
+.table-history:nth-child(odd) {
+	background: #C4C4C4 !important;
+}
+.table-history .row span {
+	display: block;
+}
