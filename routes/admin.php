@@ -25,7 +25,9 @@ Route::group([
     Route::resource('transport-types', 'TransportTypesController');
 
     //Транспорт (подвижной состав на маршруте автобус/трамвай/троллейбус)
-    Route::resource('transports', 'TransportsController');
+    Route::resource('transports', 'TransportController');
+
+    Route::get('/qr/{transport}', ['as' => 'qr.generate', 'uses' => 'QrController@show']);
 });
 
 
