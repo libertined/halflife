@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<?php require($_SERVER['DOCUMENT_ROOT'].'/includes/head.php'); ?>
+<body>
+	<div class="all">
+<?php include($_SERVER['DOCUMENT_ROOT'].'/includes/roof.php'); ?>
+		<div class="main">
+			<h1>Пополнение баланса</h1>
+			<div class="io">
+				<input type="hidden" name="paydata[pageback]" value="cabinet">
+				<!--input type="hidden" name="paydata[sum]" value="31"><p>Стоимость проезда: 31 руб.</p-->
+				<label class="pay-sum"><input type="text" name="paydata[sum]" value="" placeholder="Введите сумму пополнения"></label>
+				<div class="card-data">
+					<div class="card-data-front">
+						<img src="/pic/cards.png">
+						<label><input type="text" name="paydata[cardnum]" value="" placeholder="Введите номер карты"></label>
+						<label class="pay-thru">
+							<input type="text" name="paydata[validthru]" value="" placeholder="ММ/ГГ">
+						</label>
+					</div>
+					<div class="card-backdata">
+						<label><input type="text" name="paydata[cvc]" value="" placeholder="CVC"></label>
+					</div>
+				</div>
+				<p class="error switch2"></p>
+			</div>
+			<div class="buy-button">
+				<div><a href="#" class="art-button go-pay">Оплатить проезд</a></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
