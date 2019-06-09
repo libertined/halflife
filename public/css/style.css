@@ -126,9 +126,9 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 .card-backdata label {position:absolute; width:25%; right:10px; top:120px;}
 .card-data-front::after {content:""; display:block; position:absolute; width:2px; height:200px; top: 16px; left: 219px; transform: rotate(38deg); background-color: #000000;}
 
-.ticket-wrap {width:280px; height:380px; padding:40px 0px 10px; margin:0px auto 20px; background:url(/pic/ful-ticket.svg) center top no-repeat; background-size:100% auto;}
+.ticket-wrap {width:290px; height:390px; padding:40px 0px 10px; margin:0px auto 20px; background:url(/pic/ful-ticket.svg) center top no-repeat; background-size:100% auto;}
 .param-visual div, .param-visual div span {font-size:16px; color:#000000; font-weight:700;}
-.param-visual {margin-bottom:10px;}
+/*.param-visual {margin-bottom:10px;}*/
 
 .pay-form .io {margin:120px auto 20px; height:120px; padding:40px 0px 0px; background:url(/pic/half-ticket.svg) center top no-repeat; border-bottom:5px solid #000000; background-size:auto 100%;}
 .pay-form p {margin:0px; font-size:18px; color:#000000; font-weight:700;}
@@ -146,6 +146,17 @@ input::placeholder {font-size:14px;}
 }
 
 
+.param-qr {
+	text-align: center;
+}
+.qr-code {
+	display: inline-block;
+}
+.qr-code img {
+	display: inline;
+	background-color: #ffffff;
+	padding: 10px;
+}
 .modal {
 	width: 100vw;
 	height: 100vh;
@@ -244,6 +255,21 @@ input::placeholder {font-size:14px;}
 	text-align: left;
 	color: #000000;
 }
+.row .text .td {
+	display: inline-block;
+}
+.row .text .id {
+	width: 100px;
+}
+.row .text .number {
+	width: 200px;
+}
+.row .text .type {
+	width: 250px;
+}
+.row .text .route {
+	width: 250px;
+}
 .row:nth-child(odd) {
 	background: #8CAA2425;
 }
@@ -314,4 +340,49 @@ header {
 	text-transform: capitalize;
 	text-decoration: none;
 	color: #000000;
+}
+
+.container-expenses {
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 55px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	color: #000000;
+}
+.text-center {
+	padding: 5px 0;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14.2px;
+	line-height: 16px;
+	text-align: center;
+	color: #000000;
+}
+.table-history {
+	display: inline-block;
+	border: 2px solid #000000;
+	border-radius: 5px;
+	width: 250px;
+	font-family: Arimo;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 14.2px;
+	line-height: 16px;
+	text-align: center;
+	margin-top: 30px;
+	background-color: #ffffff;
+}
+.table-history:nth-child(odd) {
+	background: #C4C4C4 !important;
+}
+.table-history .row span {
+	display: block;
+}
+.links ul li .page-item {
+	display: inline;
 }
