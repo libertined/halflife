@@ -236,7 +236,7 @@ function read(a)
 		postdata='ticket='+a;
 		$.ajax({
 		type: 'POST',
-		url: '/scripts/control/',
+		url: '/pay/verify/',
 		data: postdata,
 		success: function(answer) {
 			target.html(answer);

@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.auth')
 
 @section('content')
 	<div class="h1"><h1>{{ trans('dictionary.h1_buy') }}</h1></div>

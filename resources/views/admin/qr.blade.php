@@ -1,6 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-	<p><img src="http://chart.apis.google.com/chart?cht=qr&chs=480x480&chl={{ route('pay.show', $transport) }}"></p>';
-	<p>Автобус №34<br>{{ trans('dictionary.qr_inbus_coment') }}</p>
+	<div class="qr-code" id="qrcode">
+		<img src="blank.png" alt="{{ route('pay.show', $transport) }}"></p>
+	</div>
+	<p>{{ $transport->type->title }} №{{ $transport->route->number }}<br>{{ trans('dictionary.qr_inbus_coment') }}</p>
+
 @endsection
