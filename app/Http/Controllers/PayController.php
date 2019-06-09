@@ -38,7 +38,9 @@ class PayController extends Controller
      */
     public function prepare(Request $request, Transport $transport, Tariff $tariff)
     {
-        $route = Auth::check() ? 'pay.transaction' : 'pay.card';
+        if (Auth::check()) {
+            return $this->transaction($request, $transport, $tariff);
+        }
 
         $data = [
             "transport" => $transport,
@@ -48,7 +50,7 @@ class PayController extends Controller
         return json_encode([
             "response" => "ok",
             "postaction" => "redirect",
-            'location' => route($route, $data, false)
+            'location' => route('pay.card', $data, false)
         ]);
     }
 
@@ -87,6 +89,7 @@ class PayController extends Controller
 
         $transaction->transport_id = $transport->id;
         $transaction->tariff_id = $tariff->id;
+        $transaction->user_id = Auth::check() ? Auth::user()->getAuthIdentifier() : null;
         $transaction->cost = $tariff->cost;
         $transaction->geo_data = json_encode([
             'lat' => rand(30,36) . '.123456',
@@ -100,7 +103,7 @@ class PayController extends Controller
             "location" => route('pay.ticket', [
                 'transaction' => $transaction->id,
                 'signature' => $transaction->getSignature()
-            ])
+            ], false)
         ]);
     }
 

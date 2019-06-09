@@ -7,10 +7,16 @@
         </div>
 	</div>
 	<div class="param-visual">
-		<div class="ticket-time"><?=date("d.m.Y H:i", 1560006691) ?></div>
-		<div class="ticket-bus"><span>Автобус</span> <span>№34</span> - <span>31 </span><span>{{ trans('dictionary.rub') }}</span></div>
+		<div class="ticket-time">{{ $transaction->created_at->format("d.m.Y H:i") }}</div>
+		<div class="ticket-bus"><span>{{ $transaction->transport->type->title }}</span> <span>№ {{ $transaction->transport->route->number }}</span> - <span>{{ $transaction->cost }} </span><span>{{ trans('dictionary.rub') }}</span></div>
 	</div>
 	<p>{{ trans('dictionary.ticket_show_info') }}</p>
 	<p>&nbsp;</p>
-	<div><a href="/" class="art-button btn-large">{{ trans('dictionary.go_to_cabinet') }}</a></div>
+	<div>
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <a href="{{ route('cabinet') }}" class="art-button btn-large">{{ trans('dictionary.go_to_cabinet') }}</a>
+        @else
+            <a href="{{ route('register') }}" class="art-button btn-large">{{ trans('dictionary.go_to_cabinet') }}</a>
+        @endif
+    </div>
 @endsection
