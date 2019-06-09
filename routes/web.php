@@ -11,6 +11,7 @@
 |
 */
 
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,19 +28,21 @@ Route::get('/login', function () {
 Route::post('/auth', 'Auth\LoginController@login');
 
 //авторизация пользователя (непосредственно)
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
-Route::get('/cabinet', function () {
-    return view('cabinet.cabinet');
-});
+Route::get('/cabinet', ['as' => 'cabinet', 'uses' => function () {
+    return view('cabinet.cabinet', [
+        'transaction' => Transaction::where('user_id', Auth::user()->getAuthIdentifier())->first()
+    ]);
+}]);
 
-Route::get('/scan', function () {
+Route::get('/scan', ['as' => 'scan', 'uses' =>  function () {
     return view('cabinet.scan');
-});
+}]);
 
-Route::get('/register', function () {
+Route::get('/register', ['as' => 'register', 'uses' => function () {
     return view('auth.register');
-});
+}]);
 
 // Загрузить страницу с данными для оплаты
 Route::group([

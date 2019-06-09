@@ -16,11 +16,11 @@
 			</div>
 		</div>
 		<div>
-			<div class="real-ticket"><a href="/ticket/">{{ trans('dictionary.thereis_ticket') }}<br>Автобус №34</a></div>
+			<div class="real-ticket"><a href="{{ route('pay.ticket', ['transaction' => $transaction->id, 'signature' => $transaction->getSignature()]) }}">{{ trans('dictionary.thereis_ticket') }}<br>{{ $transaction->transport->type->title }} №{{ $transaction->transport->route->number }}</a></div>
 		</div>
 	</div>
 	<div class="buy-button">
-		<div><a href="/scan/" class="art-button">{{ trans('dictionary.sbm_getscan') }}</a></div>
+		<div><a href="{{ route('scan') }}" class="art-button">{{ trans('dictionary.sbm_getscan') }}</a></div>
 	</div>
 	<div class="stack">
 		<div class="h2"><h2 class="cntr">{{ trans('dictionary.h1_history') }}</h2></div>
@@ -28,6 +28,6 @@
 
 		</div>
 	</div>
-	<div class="exit-button"><a href="#" class="exit">{{ trans('dictionary.exit') }}</a></div>
+	<div class="exit-button"><a href="{{ route('logout') }}" class="exit">{{ trans('dictionary.exit') }}</a></div>
 	</div>
 @endsection
