@@ -17,9 +17,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectPassenger = 'cabinet';
+    protected $redirectPassenger = '/cabinet';
 
-    protected $redirectInspector = 'inspector/cabinet';
+    protected $redirectInspector = '/inspector/cabinet';
 
     public function login(Request $request)
     {

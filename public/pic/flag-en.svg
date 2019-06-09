@@ -1,0 +1,16 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="15" r="14.5" fill="#01B4BC" stroke="black"/>
+<line x1="4.70711" y1="4.29289" x2="25.7071" y2="25.2929" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+<line x1="5.35355" y1="3.64645" x2="26.3536" y2="24.6464" stroke="#FA5457" stroke-linejoin="round"/>
+<line y1="-1" x2="29.6985" y2="-1" transform="matrix(-0.707107 0.707107 0.707107 0.707107 26 5)" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+<line y1="-0.5" x2="29.6985" y2="-0.5" transform="matrix(-0.707107 0.707107 0.707107 0.707107 25 4)" stroke="#FA5457" stroke-linejoin="round"/>
+<line x1="29" y1="16" x2="1" y2="16" stroke="white" stroke-width="2"/>
+<line y1="-1" x2="28" y2="-1" transform="matrix(-1 0 0 1 29 15)" stroke="white" stroke-width="2"/>
+<line x1="16" y1="1" x2="16" y2="29" stroke="white" stroke-width="2"/>
+<line y1="-1" x2="28" y2="-1" transform="matrix(4.37114e-08 1 1 -4.37114e-08 15 1)" stroke="white" stroke-width="2"/>
+<line x1="29" y1="15.5" x2="1" y2="15.5" stroke="#FA5457"/>
+<line y1="-0.5" x2="28" y2="-0.5" transform="matrix(-1 0 0 1 29 15)" stroke="#FA5457"/>
+<circle cx="15" cy="15" r="14.5" stroke="black"/>
+<line x1="15.5" y1="1" x2="15.5" y2="29" stroke="#FA5457"/>
+<line x1="14.5" y1="1" x2="14.5" y2="29" stroke="#FA5457"/>
+</svg>

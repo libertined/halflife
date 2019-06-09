@@ -12,20 +12,15 @@
     <script src="/js/webqr.js?"></script>
 </head>
 <body>
-<div class="all">
-    <div class="logo">
-        <a href="/" class="logo-img"><img src="/pic/logo3.png"></a>
-        @if (app()->isLocale('en'))
-            <a href="/setlocale/ru" class="flags"><img src="/pic/flag-ru.png"><span>рус</span></a>
-        @else
-            <a href="/setlocale/en" class="flags"><img src="/pic/flag-en.png"><span>eng</span></a>
-        @endif
-    </div>
-    <div class="h1"><h1>{{ trans('dictionary.h1_admin') }}</h1></div>
-    <div class="dual">
+    <header>
+        <div class="menu"><a href="">АДМИНИСТРАТОР</a></div>
+        <div class="menu"><a href="">МАРШРУТЫ</a></div>
+        <div class="menu"><a href="/transports">ТРАНСПОРТНЫЕ СРЕДСТВА</a></div>
+        <div class="menu"><a href="">КОНТРОЛЕРЫ</a></div>
+    </header>
+    <div class="container">
         @yield('content')
     </div>
     <div class="exit-button"><a href="/logout" class="exit">{{ trans('dictionary.exit') }}</a></div>
-</div>
 </body>
 </html>

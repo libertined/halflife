@@ -1,5 +1,4 @@
 <?php
-$words['title'] = 'Система электронной оплаты проезда';
 $words['nic_plh']='Укажите телфон в любом формате';
 $words['passw_plh']='Введите Ваш пароль';
 $words['passw2_plh']='Придумайте пароль для входа';
@@ -10,7 +9,7 @@ $words['sbm_enter']='Войти';
 $words['sbm_register']='Регистрация';
 $words['reg_link']='Зарегистрироваться';
 $words['reg_inauth_info']='Если вы впервые используете систему QR-ticket, то Вам необходимо пройти регистрацию. Это займёт всего минуту.';
-$words['onepay_link']='Однократная оплата';
+$words['onepay_link']='Разовая оплата';
 $words['h1_authorize']='Авторизация';
 $words['h1_register']='Регистрация';
 $words['h1_balance']='Баланс';
@@ -18,11 +17,9 @@ $words['h1_buy']='Оплата проезда';
 $words['buy_info']='Подтвердите оплату проезда на этом транспорте';
 $words['buy_cost']='Стоимость';
 $words['rub']='руб';
-$words['addfunds']='Оплатить';
+$words['addfunds']='Пополнить баланс';
 $words['payment_sum_plh']='Введите сумму пополнения';
-$words['payment_card_number']='Введите номер карты';
-$words['payment_date']='ММ/ГГ';
-$words['sbm_buy']='Оплатить';
+$words['sbm_buy']='Подтвердить';
 $words['sbm_pay_sum']='Оплатить';
 $words['sbm_getscan']='Оплатить проезд';
 $words['h1_history']='Последние поездки';
@@ -61,5 +58,7 @@ $words['ticket_error_no']='Данный билет недействителен 
 $words['ticket_error_time']='Данный билет просрочен или куплен на другой транспорт';
 $words['ticket_valid']='Билет действителен';
 $words['no_money']='На вашем балансе недостаточно средств. Перейдите в Личный Кабинет, чтобы пополнить баланс.';
+$words['back']='Назад';
+
 
 return $words;
