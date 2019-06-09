@@ -132,16 +132,19 @@ class PayController extends Controller
      * Верификация платежа.
      *
      * @param Request $request
-     * @param string $ticket
+     * @param Transaction $transaction
+     * @param string $signature
      * @return array
      */
-    public function verify(Request $request, string $ticket)
+    public function verify(Request $request, Transaction $transaction, string $signature)
     {
-        $ticket = explode("::", $ticket);
+        return view('cabinet.success', [
+            'valid' => $transaction->isValidSignature($signature),
+            'transaction' => $transaction,
+        ]);
 
-        $transaction = new Transaction($ticket[0]);
-        $signature = new Transaction($ticket[1]);
-
+        //Для ajax запросов
+        /**
         return json_encode([
             'success' => 1,
             'date' => [
@@ -149,6 +152,7 @@ class PayController extends Controller
                 'transaction' => $transaction->toArray(),
             ]
         ]);
+         **/
     }
 
     /**
