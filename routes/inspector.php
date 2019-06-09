@@ -12,18 +12,27 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+Route::group([
+    'prefix' => 'inspector',
+    'as' => 'inspector.',
+], function () {
+
 // Главная страница
-Route::get('/inspector', function () {
-})->middleware('auth.inspector.mainpage');
+    Route::get('/', function () {
+    })->middleware('auth.inspector.mainpage');
 
 //Авторизация страница с формой
-Route::get('/inspector/login', function () {
-    return view('inspector.auth');
-});
+    Route::get('/login', function () {
+        return view('inspector.auth');
+    });
 
 //авторизация пользователя (непосредственно)
-Route::post('/inspector/auth', 'Auth\LoginController@loginInspector');
+    Route::post('/auth', 'Auth\LoginController@loginInspector');
 
-Route::get('/inspector/cabinet', function () {
-    return view('inspector.control');
+    Route::get('/cabinet', function () {
+        return view('inspector.control');
+    });
+
 });
+
+

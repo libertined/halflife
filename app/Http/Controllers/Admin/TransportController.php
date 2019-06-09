@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Transport;
+use App\Http\Controllers;
+use App\Models\Transport;
 use Illuminate\Http\Request;
 
-class TransportController extends Controller
+class TransportController extends Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,10 @@ class TransportController extends Controller
      */
     public function index()
     {
-        //
+        $transports = Transport::paginate(20);
+        return view('admin.transport', [
+            "transports" => $transports,
+        ]);
     }
 
     /**
