@@ -26,6 +26,8 @@ Route::get('/login', function () {
 //авторизация пользователя (непосредственно)
 Route::post('/auth', 'Auth\LoginController@login');
 
+//авторизация пользователя (непосредственно)
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/cabinet', function () {
     return view('cabinet.cabinet');
@@ -40,36 +42,51 @@ Route::get('/register', function () {
 });
 
 // Загрузить страницу с данными для оплаты
-/**
- * Данные для заполнения оплаты:
- *  - для транзакции: id транпорта (отправляется в запросе на оплату вместе с платежными реквизитами)
- *  - для отображения: номер маршрута, уникальный номер транспорта, стоимость проезда
- */
-Route::get('/pay/{transport}/{tariff_id?}', 'PayController@show');
+Route::group([
+    'prefix' => 'pay',
+    'as' => 'pay.',
+], function () {
+    // Отобразить страницу оплаты
+    Route::get('/show/{transport}/{tariff_id?}', [
+        'as' => 'show',
+        'uses' => 'PayController@show'
+    ]);
 
-// Обработка транзакции оплаты
-Route::get('/pay/{transport}/transaction', ['as' => 'pay.transaction', 'uses' => function () {
+    // Форма оплаты (эквайринг)
+    Route::get('/card/{transport}/{tariff}', [
+        'as' => 'card',
+        'uses' => 'PayController@card'
+    ]);
+
+    // Обработка транзакции оплаты
+    Route::post('/transaction/{transport}/{tariff}', [
+        'as' => 'transaction',
+        'uses' => 'PayController@transaction'
+    ]);
+
+    // Обработка транзакции оплаты
+    Route::get('/ticket/{transaction}', [
+        'as' => 'ticket',
+        'uses' => 'PayController@ticket'
+    ]);
+
     /**
-     * Принимаемые данные:
-     * - id транспорта
-     * - данные транзакции (карта и т.д.)
+     * Верификация оплаты контролером
+     * ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
      */
+    Route::get('/verify/{transaction}', [
+        'as' => 'verify',
+        'uses' =>'PayController@verify',
+        //'middleware' => 'auth.inspector'
+    ]);
+});
 
-    /**
-     * Возвращаемые данные:
-     * - результат транзакции
-     * - id транзакции (номер билетика)
-     * - дата оплаты
-     * - сигнатура оплаты (подпись данных для верификации платежа)
-     */
-    return view('cabinet.ticket');
-}]);
 
-/**
- * Верификация оплаты
- * ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
- */
-Route::get('/pay/verify/{transaction}', 'PayController@verify');
+
+
+
+
+
 
 //регистрация
 

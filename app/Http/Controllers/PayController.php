@@ -2,42 +2,89 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tariff;
 use App\Models\Transaction;
 use App\Models\Transport;
-use App\Models\Tariff;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PayController extends Controller
 {
+    /**
+     * Отобразить информацию о платеже.
+     * @param Transport $transport
+     * @return View
+     */
     public function show(Transport $transport)
     {
-        $data = $this->getDataByTransport($transport);
-        $data["link"] = $this->getTransactionLink($data);
-
-        return view('cabinet.buy', $data);
+        return view('cabinet.buy', [
+            "transport" => $transport,
+            "tariff" => $transport->getTariffs()->first()
+        ]);
     }
 
-    protected function getDataByTransport(Transport $transport)
+    /**
+     * Форма оплаты (эквайринговая система).
+     * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
+     * @return array
+     */
+    public function card(Request $request, Transport $transport, Tariff $tariff)
     {
-        $tariffs = $transport->getTariffs()->toArray();
-        $data = [
-            "id" => $transport->id,
-            "type" => $transport->type->title,
-            "route" => $transport->route->number,
-            "tariff" => reset($tariffs),
-        ];
-
-        return $data;
+        return view('cabinet.card', [
+            "transport" => $transport,
+            "tariff" => $tariff
+        ]);
     }
 
-    protected function getTransactionLink($data)
+    /**
+     * Принимаемые данные:
+     * - id транспорта
+     * - данные транзакции (карта и т.д.)
+     * Возвращаемые данные:
+     * - результат транзакции
+     * - id транзакции (номер билетика)
+     * - дата оплаты
+     * - сигнатура оплаты (подпись данных для верификации платежа)
+     * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
+     * @return array
+     */
+    public function transaction(Request $request, Transport $transport, Tariff $tariff)
     {
-        $linkData = [
-            "transport" => $data['id'],
-            "tariff" => $data['tariff']['id'],
-        ];
+        $transaction = new Transaction();
 
-        return route('pay.transaction', $linkData);
+        $transaction->transport_id = $transport->id;
+        $transaction->tariff_id = $tariff->id;
+        $transaction->cost = $tariff->cost;
+        $transaction->geo_data = json_encode([
+            'lat' => rand(30,36) . '.123456',
+            'lon' => rand(30,36) . '.654321',
+        ]);
+        $transaction->save();
+
+        return json_encode([
+            "response" => "ok",
+            "postaction" => "redirect",
+            "location" => route('pay.ticket', [
+                'transaction' => $transaction->id
+            ])
+        ]);
+    }
+
+    /**
+     * Страница отображения купленого билета
+     * @param Request $request
+     * @param Transaction $transaction
+     * @return View
+     */
+    public function ticket(Request $request, Transaction $transaction)
+    {
+        return view('cabinet.ticket', [
+            'transaction' => $transaction
+        ]);
     }
 
     /**
@@ -55,10 +102,26 @@ class PayController extends Controller
             'success' => 1,
             'date' => [
                 'valid' => $valid,
-                'transport' => $transaction->transport->toArray(),
-                'route' => $transaction->transport->route->toArray(),
-                'tariff' => $transaction->tariff->toArray(),
+                'transaction' => $transaction->toArray(),
             ]
         ];
     }
+
+    /**
+     * @param Transport $transport
+     * @return array
+     */
+    protected function getDataByTransport(Transport $transport)
+    {
+        $tariffs = $transport->getTariffs()->toArray();
+        $data = [
+            "id" => $transport->id,
+            "type" => $transport->type->title,
+            "route" => $transport->route->number,
+            "tariff" => reset($tariffs),
+        ];
+
+        return $data;
+    }
+
 }
