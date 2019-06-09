@@ -93,8 +93,24 @@ var showQr = function() {
 	});
 }
 
-showQr();
+var timer;
+$('.table-container').on('mouseover', '.edit', function() {
+	$(this).parent().children('.delete').css('display', 'inline-block');
+});
+$('.table-container').on('mouseleave', '.edit', function() {
+	var self = $(this);
+	timer = setTimeout(function(){
+		self.parent().children('.delete').css('display', 'none')
+	}, 500);
+});
+$('.table-container').on('mouseover', '.delete', function() {
+	clearTimeout(timer);
+});
+$('.table-container').on('mouseleave', '.delete', function() {
+	$(this).parent().children('.delete').css('display', 'none')
+});
 
+showQr();
 });
 
 
