@@ -19,6 +19,6 @@
 		<p class="register-link"><a href="/auth/"></a></p>
 	</div>
 	<div>
-		<label class="onepay"><a href="/auth/" class="art-button art22 btn-large">{{ trans('dictionary.back') }}</a></label>
+		<label class="onepay"><a href="{{ route('login') }}" class="art-button art22 btn-large">{{ trans('dictionary.back') }}</a></label>
 	</div>
 @endsection
