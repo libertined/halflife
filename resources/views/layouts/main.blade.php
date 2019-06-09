@@ -10,6 +10,29 @@
     <script src="/js/java.js?"></script>
     <script src="/js/llqrcode.js"></script>
     <script src="/js/webqr.js?"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+      if (navigator.serviceWorker.controller) {
+        console.log("[PWA Builder] active service worker found, no need to register");
+      } else {
+        // Register the service worker
+        navigator.serviceWorker
+          .register("sw.js", {
+            scope: "./"
+          })
+          .then(function(serviceWorkerRegistration) {
+        serviceWorkerRegistration.pushManager.subscribe().then(
+          function(pushSubscription) {
+            console.log(pushSubscription.subscriptionId);
+            console.log(pushSubscription.endpoint);
+          }, function(error) {
+            console.log(error);
+          }
+          );
+        });
+      }
+    }
+    </script>
     <script type="text/javascript" src="/js/qrcode.min.js"></script>
 
 </head>
