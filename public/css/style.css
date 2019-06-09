@@ -10,7 +10,7 @@
 --color-front2:#a9c45e;
 --color-middle:#f9ab00;
 --color-light:#f9df7b;
---color-grey:#a8a8a8;
+--color-grey:#000000;
 --color-basic:#575757;
 }
 
@@ -28,7 +28,7 @@ h1, h2, h3 {color:var(--color-grey); margin:0px;}
 h1 {font-size:32px; font-weight:500;}
 h2 {font-size:24px; font-weight:500;}
 
-.all {max-width:1058px; margin:20px auto; padding:20px; border:1px solid var(--color-front); border-radius:40px;}
+.all {max-width:1058px; margin:20px auto; padding:40px 20px 20px; border:1px solid var(--color-front); border-radius:40px;}
 .io {position:relative;}
 /*.h1 {position:absolute; width:100%; top:60px; opacity:0.7; text-align:center;}*/
 .h1 {display:none;}
@@ -38,32 +38,31 @@ h2 {font-size:24px; font-weight:500;}
 .p-large {font-size:24px; color:var(--color-front);}
 
 #auth, #register {position:relative;}
-.art-button {display:inline-block; font-weight:500; color:#ffffff; background-color:var(--color-front); border-radius:32px; text-align:center; text-decoration:none; outline:none; transition:0.3s;}
+.art-button {display:inline-block; font-weight:500; color:#ffffff; background-color:var(--color-front); border:2px solid var(--color-grey); border-radius:6px; text-align:center; font-size:24px; color:#000000; text-decoration:none; text-transform:uppercase; outline:none; transition:0.3s;}
 .art-button:hover {background-color:var(--color-front2); color:#ffffff;}
-.play-button {position:absolute; right:-5px; width:54px; height:24px; top:24px; padding:9px 0px 21px; font-size:48px; line-height:24px; font-weight:700; border:5px solid #ffffff;}
-.play-button:focus {border:5px solid var(--color-back);}
-.get-low {top:220px;}
-.btn-large {padding:12px 20px; font-size:18px; min-width:180px;}
+.play-button {position:absolute; right:-5px; width:54px; height:24px; top:24px; padding:9px 0px 21px; font-size:48px; border-radius:32px; line-height:24px; font-weight:700; border:5px solid #ffffff; background:url(/pic/go-on.svg) center center no-repeat var(--color-front); background-size:24px 24px;}
+.get-low {top:150px;}
+.btn-large {padding:12px 20px; min-width:180px;}
 .btn-small {padding:10px 16px; font-size:16px; width:110px;}
-.art-button.art22 {background-color:var(--color-grey);}
+.art-button.art22 {background-color:var(--color-back);}
 .round-button {display:block; width:48px; padding:0px 0px 8px; background:var(--color-front); color:#ffffff; font-size:44px; line-height:40px; font-weight:300; text-decoration:none; border-radius:32px; text-align:center;}
 .round-button:hover {background-color:var(--color-back); color:#ffffff;}
 .buy-button a {width:100px; height:40px; padding:30px 0px; border-radius:50px;}
 .buy-button {margin:10px 0px;}
 
-.forgot {text-align:right; width:400px; margin:-10px auto 0px;}
-.forgot a, .forgot span {display:inline-block; vertical-align:middle;}
-.forgot span {width:30px; height:20px; padding:3px 0px 7px; font-size:20px; background-color:var(--color-grey); color:#ffffff; border:1px solid var(--color-basic); border-radius:16px; text-align:center;}
-.forgot a {padding:5px 0px 5px 0px; width:0px; height:20px; margin:0px -14px 0px 0px; text-decoration:none; text-transform:lowercase; font-size:14px; border-bottom:1px solid var(--color-grey); border-left:1px solid var(--color-grey); border-top:1px solid var(--color-grey); border-radius:16px 0px 0px 16px; overflow:hidden; transition:0.2s;}
-.forgot:hover a {width:110px; padding:5px 24px 5px 12px;}
+.quatro {display:flex; flex-wrap:wrap;} 
+.quatro div {width:120px; padding:20px;}
+.quatro div a {display:block; width:116px; height:116px; border:2px solid var(--color-grey); border-radius:60px;}
+.quatro div span {display:block; color:var(--color-grey); font-weight:500;}
+.quatro-ticket a {background:url(/pic/round-ticket.svg) center center no-repeat; background-size:100px 100px;} 
+.quatro-balance a {background:url(/pic/round-money.svg) center center no-repeat; background-size:100px 100px;} 
+.quatro-pay a {background:url(/pic/round-card.svg) center center no-repeat; background-size:100px 100px;} 
+.quatro-details a {background:url(/pic/round-calendar.svg) center center no-repeat; background-size:70px 70px;} 
 
 .sms-code {display:none;}
 label.onepay {margin-top:30px;}
 .logo {position:relative; padding:0px; height:140px; margin:auto; text-align:center;}
 .logo-img img {height:120px; width:auto;}
-.flags {display:block; position:absolute; top:10px; right:10px; text-align:center; text-decoration:none;}
-.flags img {height:20px;}
-.flags span {display:block; font-weight:500; font-size:14px;}
 .error {display:none;}
 p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;}
 .dual {display:flex;}
@@ -79,7 +78,7 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 #outdiv video {width:100%;}
 #qr-canvas {display:none;}
 .admin .dual h2 {margin:20px 0px 4px;}
-.register-link a {font-size:22px;}
+.register-link a {display:inline-block; height:36px; font-size:30px; color:var(--color-grey);}
 
 .popup {position:absolute; width:720px; margin-left:-360px; top:100px; left:50%; padding:10px; background-color:#ffffff; box-shadow:2px 2px 9px #000000; border-radius:32px 0px 32px 0px;}
 .popup .close {display:block; position:absolute; right:16px; top:12px; color:var(--color-back); font-size:24px; text-decoration:none;}
@@ -100,10 +99,37 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 .stack-unit .stack-num {width:20%;}
 
 .exit-button {margin-top:80px; text-align:center;}
+.three-on-floor {display:block; margin-top:60px; padding:10px 0px; text-align:center;}
+.three-on-floor div {display:inline-block; margin:0px 5px; vertical-align:middle;}
+.forgot {text-align:right; width:130px;}
+.weakview a {display:block; width:28px; height:28px; border:2px solid var(--color-grey); border-radius:16px; background:url(/pic/eye.svg) center center no-repeat; background-size:24px 24px;}
+.lang {text-align:left; width:130px;}
+.lang a {display:inline-block; width:32px; height:32px; border-radius:16px; background:url(/pic/flag-ru.svg) center center no-repeat; background-size:100% 100%;}
+.lang a.en {background:url(/pic/flag-ru.svg) center center no-repeat; background-size:100% 100%;}
+.forgot a, .forgot span {display:inline-block; vertical-align:middle;}
+.forgot span {width:30px; height:20px; padding:3px 0px 7px; font-size:20px; background-color:var(--color-grey); color:#ffffff; border:1px solid var(--color-basic); border-radius:16px; text-align:center;}
+.forgot a {padding:5px 0px 5px 0px; width:0px; height:20px; margin:0px -14px 0px 0px; text-decoration:none; text-transform:lowercase; font-size:12px; border-bottom:1px solid var(--color-grey); border-left:1px solid var(--color-grey); border-top:1px solid var(--color-grey); border-radius:16px 0px 0px 16px; overflow:hidden; transition:0.2s;}
+.forgot:hover a {width:92px; padding:5px 18px 5px 0px;}
 
 .param-visual div {font-size:24px; color:var(--color-front);}
 .check-success {padding:10px 0px; text-align:center; color:var(--color-front); background-color:#e8ffe8;}
 .checked {background-color:$ffffff; opacity:0.3; transition:3s;}
+.card-data {width:300px; height:170px; margin: auto; position:relative;}
+.card-data img {max-width:100%; margin-bottom:10px;}
+.card-data-front {width:240px; position:absolute; left:0px; padding:10px 20px 20px; clip-path:polygon(0% 0%, 100% 0%, 100% 40px, 178px 100%, 0% 100%); background-color:var(--color-front); border: 2px solid var(--color-grey); border-radius:8px; z-index:10;}
+.card-backdata {position: absolute; width: 240px; height: 130px; padding:20px; background-color: #e0e0e0; border: 2px solid var(--color-grey); border-radius: 8px; right: 0px; top: 20px;}
+.card-data-front label {width:80%;}
+.card-data label {text-align:left; margin:0px 0px 20px;}
+.card-data label input {height: 20px; font-size:18px;}
+.card-data label.pay-thru {margin:0px;}
+.card-data label.pay-thru input {width:25%;}
+.card-backdata label {position:absolute; width:25%; right:10px; top:120px;}
+.card-data-front::after {content:""; display:block; position:absolute; width:2px; height:200px; top: 16px; left: 219px; transform: rotate(38deg); background-color: #000000;}
+
+.ticket-wrap {width:280px; height:380px; padding:40px 0px 10px; margin:0px auto 20px; background:url(/pic/ful-ticket.svg) center top no-repeat; background-size:100% auto;}
+.param-visual div, .param-visual div span {font-size:16px; color:#000000; font-weight:700;}
+.param-visual {margin-bottom:10px;}
+
 
 @media (max-width: 777px) {
 .all {margin:0px; padding:10px; border:0px;}
@@ -114,15 +140,9 @@ input::placeholder {font-size:14px;}
 .admin .dual {flex-wrap:wrap;}
 .admin .dual > div {width:100%;}
 .stack-unit span, .stack-unit a {padding:0px 3px; font-size:13px;}
-.forgot {width:90%;}
 }
 
-.param-qr {
-	text-align: center;
-}
-.qr-code {
-	display: inline-block;
-}
+
 .modal {
 	width: 100vw;
 	height: 100vh;
