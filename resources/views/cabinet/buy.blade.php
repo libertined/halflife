@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="h1"><h1>{{ trans('dictionary.h1_buy') }}</h1></div>
-	<div class="active-form" id="buy">
+	<div class="active-form" id="{{ route('pay.transaction', ['transport' => $transport->id, 'tariff' => $tariff->id]) }}">
 		<div class="io">
 			<p>{{ trans('dictionary.buy_info') }}</p>
 			<input type="hidden" name="buy[bus]" value="{{ $transport->id }}">
