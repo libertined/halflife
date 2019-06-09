@@ -7,13 +7,12 @@
 			<div class="ticket-time">{{ $transaction->created_at->format("d.m.Y H:i") }}</div>
 			<div class="ticket-cost">{{ $transaction->cost }}  {{ trans('dictionary.rub') }}</div>
 		</div>
-		<div class="param-qr">
-			<div class="qr-code"><img src="http://chart.apis.google.com/chart?cht=qr&chs=240x240&chl={{ $verifyString }}"></div>
+		<div class="qr-code" id="qrcode">
+			<img src="blank.png" alt="{{ $verifyString }}"></p>
 		</div>
 		<div class="param-pin">
 			<div>1 2 3 4</div>
 		</div>
-		<div>{{ trans('dictionary.ticket_show_info') }}</div>
 	</div>
 	<div>
 		@if(\Illuminate\Support\Facades\Auth::check())
