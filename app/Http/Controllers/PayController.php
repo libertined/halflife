@@ -18,9 +18,13 @@ class PayController extends Controller
      */
     public function show(Transport $transport)
     {
+        $tariff = $transport->getTariffs()->first();
+        $prepare = route('pay.prepare', ['transport' => $transport->id, 'tariff' => $tariff->id]);
+
         return view('cabinet.buy', [
             "transport" => $transport,
-            "tariff" => $transport->getTariffs()->first()
+            "tariff" => $tariff,
+            'prepareLink' => $prepare
         ]);
     }
 
@@ -34,7 +38,7 @@ class PayController extends Controller
      */
     public function prepare(Request $request, Transport $transport, Tariff $tariff)
     {
-        $route = Auth::check() ? 'pay.transaction' : 'cabinet.card';
+        $route = Auth::check() ? 'pay.transaction' : 'pay.card';
 
         $data = [
             "transport" => $transport,
