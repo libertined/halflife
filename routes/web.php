@@ -65,7 +65,7 @@ Route::group([
     ]);
 
     // Обработка транзакции оплаты
-    Route::get('/ticket/{transaction}', [
+    Route::get('/ticket/{transaction}/{signature}', [
         'as' => 'ticket',
         'uses' => 'PayController@ticket'
     ]);
@@ -74,7 +74,7 @@ Route::group([
      * Верификация оплаты контролером
      * ( не обязательно т.к. ключ проверки сигнатуры можно загружать каждый день контролеру и хранить егое в локал сторадже, проверку делать на фронте)
      */
-    Route::get('/verify/{transaction}', [
+    Route::get('/verify/{transaction}/{signature}', [
         'as' => 'verify',
         'uses' =>'PayController@verify',
         //'middleware' => 'auth.inspector'

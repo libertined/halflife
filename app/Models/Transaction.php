@@ -53,4 +53,14 @@ class Transaction extends Model
         return md5(join('::', $parts));
     }
 
+    /**
+     * Проверить валидность сигнатуры оплаты
+     * @param string $signature
+     * @return bool
+     */
+    public function isValidSignature(string $signature): bool
+    {
+        return $signature == $this->getSignature();
+    }
+
 }
