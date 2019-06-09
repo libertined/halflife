@@ -152,6 +152,11 @@ input::placeholder {font-size:14px;}
 .qr-code {
 	display: inline-block;
 }
+.qr-code img {
+	display: inline;
+	background-color: #ffffff;
+	padding: 10px;
+}
 .modal {
 	width: 100vw;
 	height: 100vh;
