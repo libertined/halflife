@@ -130,7 +130,7 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 .param-visual div, .param-visual div span {font-size:16px; color:#000000; font-weight:700;}
 .param-visual {margin-bottom:10px;}
 
-.pay-form .io {margin:120px auto 20px; height:90px; padding:30px 0px 10px; background:url(/pic/half-ticket.svg) center top no-repeat; border-bottom:5px solid #000000; background-size:auto 100%;}
+.pay-form .io {margin:120px auto 20px; height:120px; padding:40px 0px 0px; background:url(/pic/half-ticket.svg) center top no-repeat; border-bottom:5px solid #000000; background-size:auto 100%;}
 .pay-form p {margin:0px; font-size:18px; color:#000000; font-weight:700;}
 
 @media (max-width: 777px) {
