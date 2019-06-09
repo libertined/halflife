@@ -6,6 +6,7 @@ use App\Models\Tariff;
 use App\Models\Transaction;
 use App\Models\Transport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PayController extends Controller
@@ -17,9 +18,37 @@ class PayController extends Controller
      */
     public function show(Transport $transport)
     {
+        $tariff = $transport->getTariffs()->first();
+        $prepare = route('pay.prepare', ['transport' => $transport->id, 'tariff' => $tariff->id]);
+
         return view('cabinet.buy', [
             "transport" => $transport,
-            "tariff" => $transport->getTariffs()->first()
+            "tariff" => $tariff,
+            'prepareLink' => $prepare
+        ]);
+    }
+
+    /**
+     * Подготовка оплаты
+     * (возвращает куда выполнить редирект)
+     * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
+     * @return false|string
+     */
+    public function prepare(Request $request, Transport $transport, Tariff $tariff)
+    {
+        $route = Auth::check() ? 'pay.transaction' : 'pay.card';
+
+        $data = [
+            "transport" => $transport,
+            "tariff" => $tariff
+        ];
+
+        return json_encode([
+            "response" => "ok",
+            "postaction" => "redirect",
+            'location' => route($route, $data, false)
         ]);
     }
 
@@ -92,10 +121,7 @@ class PayController extends Controller
         //Отображаем чек транзакции
         return view('cabinet.ticket', [
             'transaction' => $transaction,
-            'verifyLink' => route('pay.verify', [
-                'transaction' => $transaction->id,
-                'signature' => $transaction->getSignature()
-            ])
+            'verifyString' => "{$transaction->id}::{$transaction->getSignature()}"
         ]);
     }
 
@@ -103,19 +129,23 @@ class PayController extends Controller
      * Верификация платежа.
      *
      * @param Request $request
-     * @param Transaction $transaction
-     * @param string $signature
+     * @param string $ticket
      * @return array
      */
-    public function verify(Request $request, Transaction $transaction, string $signature)
+    public function verify(Request $request, string $ticket)
     {
-        return [
+        $ticket = explode("::", $ticket);
+
+        $transaction = new Transaction($ticket[0]);
+        $signature = new Transaction($ticket[1]);
+
+        return json_encode([
             'success' => 1,
             'date' => [
                 'valid' => $transaction->isValidSignature($signature),
                 'transaction' => $transaction->toArray(),
             ]
-        ];
+        ]);
     }
 
     /**

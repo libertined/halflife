@@ -49,7 +49,7 @@ res=JSON.parse(answer);
 if (res['response']=='ok')
 {
 if (res['postaction']=='reload') {location.reload();}
-if (res['postaction']=='redirect') {window.location = '/'+res['location']+'/';}
+if (res['postaction']=='redirect') {window.location = res['location']+'/';}
 if (res['postaction']=='add') {$(res['selector']).prepend(res['addata']);}
 if (res['postaction']=='change') {$(res['selector']+' #'+res['elem']).remove(); $(res['selector']).prepend(res['addata']);}
 $('.popup').fadeOut(200);

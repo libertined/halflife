@@ -52,6 +52,12 @@ Route::group([
         'uses' => 'PayController@show'
     ]);
 
+    //ПОдготовка транзакции, перенаправление
+    Route::post('/prepare/{transport}/{tariff}', [
+        'as' => 'prepare',
+        'uses' => 'PayController@prepare'
+    ]);
+
     // Форма оплаты (эквайринг)
     Route::get('/card/{transport}/{tariff}', [
         'as' => 'card',
