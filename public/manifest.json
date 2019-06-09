@@ -2,7 +2,7 @@
   "name": "Оплата проезда",
   "short_name": "Оплата проезда",
   "lang": "ru-RU",
-  "start_url": "/",
+  "start_url": "/*",
   "display": "fullscreen",
   "theme_color": "#f9ab00",
   "icons": [
