@@ -12,6 +12,15 @@ use Illuminate\Support\Collection;
 class Transport extends Model
 {
     /**
+     * Дополнительно подгружаемые сущности
+     * @var array
+     */
+    protected $with = [
+        'route',
+        'type'
+    ];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array

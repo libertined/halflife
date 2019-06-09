@@ -2,42 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tariff;
 use App\Models\Transaction;
 use App\Models\Transport;
-use App\Models\Tariff;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PayController extends Controller
 {
+    /**
+     * Отобразить информацию о платеже.
+     * @param Transport $transport
+     * @return View
+     */
     public function show(Transport $transport)
     {
-        $data = $this->getDataByTransport($transport);
-        $data["link"] = $this->getTransactionLink($data);
-
-        return view('cabinet.buy', $data);
+        return view('cabinet.buy', [
+            "transport" => $transport,
+            "tariff" => $transport->getTariffs()->first()
+        ]);
     }
 
-    protected function getDataByTransport(Transport $transport)
+    /**
+     * Принимаемые данные:
+     * - id транспорта
+     * - данные транзакции (карта и т.д.)
+     * Возвращаемые данные:
+     * - результат транзакции
+     * - id транзакции (номер билетика)
+     * - дата оплаты
+     * - сигнатура оплаты (подпись данных для верификации платежа)
+     * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
+     * @return View
+     */
+    public function transaction(Request $request, Transport $transport, Tariff $tariff)
     {
-        $tariffs = $transport->getTariffs()->toArray();
-        $data = [
-            "id" => $transport->id,
-            "type" => $transport->type->title,
-            "route" => $transport->route->number,
-            "tariff" => reset($tariffs),
-        ];
-
-        return $data;
-    }
-
-    protected function getTransactionLink($data)
-    {
-        $linkData = [
-            "transport" => $data['id'],
-            "tariff" => $data['tariff']['id'],
-        ];
-
-        return route('pay.transaction', $linkData);
+        return view('cabinet.ticket');
     }
 
     /**
@@ -55,10 +57,26 @@ class PayController extends Controller
             'success' => 1,
             'date' => [
                 'valid' => $valid,
-                'transport' => $transaction->transport->toArray(),
-                'route' => $transaction->transport->route->toArray(),
-                'tariff' => $transaction->tariff->toArray(),
+                'transaction' => $transaction->toArray(),
             ]
         ];
     }
+
+    /**
+     * @param Transport $transport
+     * @return array
+     */
+    protected function getDataByTransport(Transport $transport)
+    {
+        $tariffs = $transport->getTariffs()->toArray();
+        $data = [
+            "id" => $transport->id,
+            "type" => $transport->type->title,
+            "route" => $transport->route->number,
+            "tariff" => reset($tariffs),
+        ];
+
+        return $data;
+    }
+
 }
