@@ -383,3 +383,6 @@ header {
 .table-history .row span {
 	display: block;
 }
+.links ul li .page-item {
+	display: inline;
+}
