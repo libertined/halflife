@@ -21,6 +21,6 @@
 		<p class="error switch2"></p>
 	</div>
 	<div class="buy-button">
-		<div><a href="{{ route('pay.transaction', ['transport' => $transport->id, 'tariff' => $tariff->id]) }}" class="art-button go-pay">{{ trans('dictionary.sbm_getscan') }}</a></div>
+		<div><a href="{{ route('pay.transaction.guest', ['transport' => $transport->id, 'tariff' => $tariff->id]) }}" class="art-button go-pay">{{ trans('dictionary.sbm_getscan') }}</a></div>
 	</div>
 @endsection

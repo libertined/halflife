@@ -108,6 +108,32 @@ class PayController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Transport $transport
+     * @param Tariff $tariff
+     * @return array
+     */
+    public function transactionGuest(Request $request, Transport $transport, Tariff $tariff)
+    {
+        $transaction = new Transaction();
+
+        $transaction->transport_id = $transport->id;
+        $transaction->tariff_id = $tariff->id;
+        $transaction->user_id = null;
+        $transaction->cost = $tariff->cost;
+        $transaction->geo_data = json_encode([
+            'lat' => rand(30,36) . '.123456',
+            'lon' => rand(30,36) . '.654321',
+        ]);
+        $transaction->save();
+
+        return redirect(route('pay.ticket', [
+            'transaction' => $transaction->id,
+            'signature' => $transaction->getSignature()
+        ]));
+    }
+
+    /**
      * Страница отображения купленого билета
      * @param Request $request
      * @param Transaction $transaction

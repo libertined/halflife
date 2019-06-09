@@ -78,6 +78,11 @@ Route::group([
         'uses' => 'PayController@transaction'
     ]);
 
+    Route::get('/transaction-guest/{transport}/{tariff}', [
+        'as' => 'transaction.guest',
+        'uses' => 'PayController@transactionGuest'
+    ]);
+
     // Обработка транзакции оплаты
     Route::get('/ticket/{transaction}/{signature}', [
         'as' => 'ticket',
