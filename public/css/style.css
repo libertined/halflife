@@ -126,9 +126,9 @@ p.error {color: #cc0000; padding: 0px 0px 4px; border-bottom: 1px solid #cc0000;
 .card-backdata label {position:absolute; width:25%; right:10px; top:120px;}
 .card-data-front::after {content:""; display:block; position:absolute; width:2px; height:200px; top: 16px; left: 219px; transform: rotate(38deg); background-color: #000000;}
 
-.ticket-wrap {width:280px; height:380px; padding:40px 0px 10px; margin:0px auto 20px; background:url(/pic/ful-ticket.svg) center top no-repeat; background-size:100% auto;}
+.ticket-wrap {width:290px; height:390px; padding:40px 0px 10px; margin:0px auto 20px; background:url(/pic/ful-ticket.svg) center top no-repeat; background-size:100% auto;}
 .param-visual div, .param-visual div span {font-size:16px; color:#000000; font-weight:700;}
-.param-visual {margin-bottom:10px;}
+/*.param-visual {margin-bottom:10px;}*/
 
 .pay-form .io {margin:120px auto 20px; height:120px; padding:40px 0px 0px; background:url(/pic/half-ticket.svg) center top no-repeat; border-bottom:5px solid #000000; background-size:auto 100%;}
 .pay-form p {margin:0px; font-size:18px; color:#000000; font-weight:700;}
