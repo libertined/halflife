@@ -3,7 +3,7 @@
 @section('content')
 	<div class="param-qr">
 		<div class="qr-code" id="qrcode">
-            <img src="blank.png" alt="{{ $verifyLink }}"></p>
+            <img src="blank.png" alt="{{ $verifyString }}"></p>
         </div>
 	</div>
 	<div class="param-visual">
