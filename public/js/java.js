@@ -58,7 +58,6 @@ if (res['response']=='sms')
 {
 $('.error').hide();
 $('.sms-code').slideDown(300);
-$('.forgot').slideUp(300);
 $('.play-button').addClass('get-low');
 $('.onepay').parent().fadeOut(300);
 }
@@ -86,8 +85,8 @@ var showQr = function() {
 	qrContainer.children('img').detach();
 	var qrcode = new QRCode(document.getElementById("qrcode"), {
 		text: qrtext,
-		width: 128,
-		height: 128,
+		width: 240,
+		height: 240,
 		colorDark : "#000000",
 		colorLight : "#ffffff",
 		correctLevel : QRCode.CorrectLevel.H
